@@ -15,7 +15,7 @@
 				}
 				
 				
-			if ($_FILES['filename']['type'] !="text/plain" && $ret )
+			if (!($_FILES['filename']['type'] =="text/plain" ||$_FILES['filename']['type'] =="text/csv") && $ret )
 				{
 					Logger::getInstance()->log ("Не верный формат файла ".$_FILES['filename']['type']);
 					$ret = false;				
@@ -30,11 +30,11 @@
 					
 					if ($extension =="txt")
 					{
-						$testReader = new TestDataReader(new TxtFileReaderStrategy($fileName));
+						$testReader = new TestDataReader(new TxtFileReaderStrategy($filePath));
 					}
 					elseif ($extension =="csv")
 					{
-						$testReader = new TestDataReader(new CsvFileReaderStrategy($fileName));
+						$testReader = new TestDataReader(new CsvFileReaderStrategy($filePath));
 					}else
 					{
 						return 0;

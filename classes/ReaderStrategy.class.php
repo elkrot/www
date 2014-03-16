@@ -26,7 +26,7 @@ abstract function getData();
         if($this->handle) 
          @fclose($this->handle); 
     }
-    private function GetSize()
+    protected function GetSize()
     {
         if($this->IsFile())
             return (filesize($this->file));
@@ -35,9 +35,11 @@ abstract function getData();
     }
     private function IsFile()
     {
-        if(is_file($this->file) && file_exists($this->file))
-            return true;
-        else
+        if(is_file($this->file) && file_exists($this->file)){
+            return true;}
+        else{
+        	Logger::getInstance()->log($this->file);
             return false;
+        }
     }
 }
