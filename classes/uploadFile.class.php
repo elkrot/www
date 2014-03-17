@@ -1,7 +1,19 @@
 <?php
-
+/**
+ * Класс uploadFile Загрузка файла
+ *
+ * Класс обеспечивающий загрузку файла
+ *
+ * @author Ф.И.О. <e-mail>
+ * @version 1.0
+ */
  class  uploadFile 
 {
+	/**
+	 * Загрузка данных из файла
+	 *
+	 * @return integer Ид темповой таблицы
+	 */
 	public static function uploadData()
 	{
 	$temp_id = 0;
@@ -47,9 +59,12 @@
 		return $temp_id;
 	}
 	
-	
+/**
+* getExtension Возвращает расширение файла 
+*
+* @return string расширение файла
+*/	
      public static function getExtension($filename) {
-        //$path_info = pathinfo($filename);
         return pathinfo($filename, PATHINFO_EXTENSION);;
       }
 

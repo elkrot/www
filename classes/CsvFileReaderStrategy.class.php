@@ -1,7 +1,19 @@
 <?php
-
+/**
+ * Класс CsvFileReaderStrategy Конкретный класс стратегии обработки данных csv файлов
+ *
+ * Класс стратегии обработки данных
+ *
+ * @author Ф.И.О. <e-mail>
+ * @version 1.0
+ */
 class CsvFileReaderStrategy extends ReaderStrategy
 {
+	/**
+	 * Получить данные из файла
+	 *
+	 * @return array
+	 */	
 public function getData()
     {
 	$i=0;

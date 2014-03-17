@@ -1,6 +1,19 @@
 <?php
+/**
+ * Класс TxtFileReaderStrategy Конкретный класс стратегии обработки данных txt файлов
+ *
+ * Класс стратегии обработки данных
+ *
+ * @author Ф.И.О. <e-mail>
+ * @version 1.0
+ */
 class TxtFileReaderStrategy extends ReaderStrategy
 {
+	/**
+	 * Получить данные из файла
+	 *
+	 * @return array
+	 */
 public function getData()
     {
 		if ($this->handle) {
@@ -30,7 +43,13 @@ public function getData()
 		 if(is_array($this->data)) 
 			return $this->data;
 	}
-	
+	/**
+	 * Получить уровень и данные строки файла
+	 *
+	 * @param string строка файла 
+	 *
+	 * @return array
+	 */	
 	function get_level($stroka)
 	{
 		$ar = array("Дисциплина"=>1,"Тема"=>2,"Вопрос"=>3,"Ответ"=>4);
