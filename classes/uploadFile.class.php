@@ -51,7 +51,8 @@
 					{
 						return 0;
 					}
-					$temp_id = $testReader->saveTempData();
+					$title  = isset($_POST["title"])?$_POST["title"]:"";
+					$temp_id = $testReader->saveTempData($extension,$title);
 					
 					unlink($filePath);
 				}	

@@ -23,7 +23,7 @@ class Database {
 	 * @param $password
 	 */
 	private function __construct(){
-		$conf=parse_ini_file($_SERVER['DOCUMENT_ROOT']."/config/config.ini");
+		$conf=parse_ini_file($_SERVER['DOCUMENT_ROOT']."/cnf/config.ini");
 	
 		$this->connection = new PDO("mysql:dbname=".$conf["dbname"].";host=".$conf["host"],$conf["user"],$conf["pass"],
 				array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));

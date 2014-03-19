@@ -38,7 +38,9 @@
     </br></br> </br></br> </br></br>
     <div>
 <form  method="post" enctype="multipart/form-data">
+ <input name = "title" type ="text">
       <input name="filename" type="file"><br> 
+
       <input value="Загрузить в БД" type="submit"><br>
 </form>
 </div>

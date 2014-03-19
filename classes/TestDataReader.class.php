@@ -46,30 +46,36 @@ class TestDataReader
 		unset($strategy);
 	}
 	/**
-	 * renderData Отрисовка данных
+	 * __toString Отрисовка данных
 	 *
 	 */
-	function renderData()
+	function __toString()
 	{
 		var_dump($this->strategy->getData());
 	}
 	/**
 	 * saveTempData Сохранить временные данные
 	 *
+	 * @var string $extension расширение закачиваемого файла
+	 *
+	 * @var string $title Описание закачки
+	 *
 	 * @return integer Ид временных данных
 	 * 
 	 */	
-	function saveTempData()
+	function saveTempData($extension,$title)
 	{
-		Logger::getInstance()->log(serialize($this->strategy->getData()));
+		//Logger::getInstance()->log(serialize($this->strategy->getData()));
+		$data = $this->strategy->getData();
+		Database::getInstance()->query("insert into tmp (title,data,upload_date,count_records,extension,userid)values
+		 (:title,:data,now(),:count_records,:extension,:userid)"
+				,array(	":title"=>$title
+						,":data"=>serialize($data)
+						,":count_records"=>count($data)
+						,":extension"=>$extension
+						,":userid"=>Authentication::GetUserId()));
+						$temp_id = Database::getInstance()->lastInsertId();
+		
 		return $temp_id;
-	}
-	/**
-	 * saveData Сохранение постоянных данных
-	 *
-	 */	
-	function saveData()
-	{
-		Logger::getInstance()->log("save");
 	}
 }
