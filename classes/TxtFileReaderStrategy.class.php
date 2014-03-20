@@ -40,6 +40,7 @@ public function getData()
 			}
 			
 		}
+		fclose($this->handle);
 		 if(is_array($this->data)) 
 			return $this->data;
 	}

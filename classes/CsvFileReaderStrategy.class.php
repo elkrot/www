@@ -31,6 +31,7 @@ public function getData()
               $i++; 
             }
         }
+        fclose($this->handle);
         if(is_array($this->data)) 
          return $this->data;
     }

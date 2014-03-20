@@ -35,7 +35,7 @@
 			
 			if(is_uploaded_file($_FILES["filename"]["tmp_name"]) && $ret )
 				{
-					$filePath= "temp.csv";
+					$filePath= "tmp/temp.csv";
 					move_uploaded_file($_FILES["filename"]["tmp_name"], $filePath);
 					$fileName = $_FILES["filename"]["name"];
 					$extension = self::getExtension($fileName);
