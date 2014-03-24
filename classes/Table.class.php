@@ -2,9 +2,10 @@
 abstract class Table implements Iterator {
 private $_container=array();
 protected $_position = 0;
-private $sql="select 1 ";
-	public function __construct(){
-		$this->_container=Database::getInstance()->query($this->sql,array(),PDO::FETCH_ASSOC);
+protected $sql;
+	public function __construct($where="",$params=array(),$limit=""){
+		$this->sql.=$where.$limit;
+		$this->_container=Database::getInstance()->query($this->sql,$params,PDO::FETCH_ASSOC);
 		$this->_position = 0;
 	}
 public function __destruct(){

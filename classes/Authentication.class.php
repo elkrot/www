@@ -8,7 +8,15 @@
  * @version 1.0
  */
  class  Authentication {
-	static function GetUserId() {
+	static function getUserId() {
 		return 1;
+	}
+	
+	static function isAdmin() {
+		return true;
+	}
+	
+	static function isUser() {
+		return self::getUserId()>0;
 	}
 }
