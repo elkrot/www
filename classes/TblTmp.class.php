@@ -4,5 +4,6 @@
 		$this->sql="select * from tmp where 1=1 ";
 		parent::__construct($where,$params,$limit);
 	}
+
 }
 ?>

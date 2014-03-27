@@ -4,5 +4,20 @@
 		$sql="select * from discipline ";
 		parent::__construct();
 	}
+	
+	public static function getIdByTitle($title)
+	{
+
+		$res = Database::getInstance()->query("select id from discipline where discipline_title=:title"
+				,array(":title"=>$title),PDO::FETCH_ASSOC);
+		$id = count($res)==0?0:$res[0]["id"];
+		//Logger::getInstance()->log(($id));		
+		if ($id==0){
+			Database::getInstance()->query("insert into discipline(discipline_title) values(:title)"
+					,array(":title"=>$title));
+			$id=Database::getInstance()->lastInsertId();
+		}
+		return $id;
+	}
 }
 ?>
