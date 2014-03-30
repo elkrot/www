@@ -1,8 +1,8 @@
 <?php
  class TblDiscipline extends Table {
-	public function __construct(){
-		$sql="select * from discipline ";
-		parent::__construct();
+	public function __construct($where="",$params=array(),$limit=""){
+		$this->sql="select * from discipline where 1=1 ";
+		parent::__construct($where,$params,$limit);
 	}
 	
 	public static function getIdByTitle($title)

@@ -30,7 +30,7 @@ public function getData()
 				}elseif ($new_lvl == 4){
 					$answer = $ar[2];
 				}			
-				if (($new_lvl<=$old_lvl)&&($new_lvl!=0)){
+				if (($new_lvl==4)){
 					$this->data[] = array ($discipline ,$topic ,$question ,$answer,$ar[1]);
 				}
 				$old_lvl=$new_lvl;

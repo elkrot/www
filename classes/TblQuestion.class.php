@@ -1,8 +1,11 @@
 <?php
  class TblQuestion extends Table {
-	public function __construct(){
-		$sql="select * from question ";
-		parent::__construct();
+	public function __construct($where="",$params=array(),$limit="",$order_by=" ORDER BY t.discipline_id, q.topic_id"){
+		$this->sql="select q . * , t.topic_title, t.discipline_id, d.discipline_title
+					FROM question q
+					LEFT JOIN topic t ON q.topic_id = t.id
+					LEFT JOIN discipline d ON t.discipline_id = d.id ";
+		parent::__construct($where,$params,$limit,$order_by);
 	}
 	
 	public static function getIdByTitle($title,$topic_id)

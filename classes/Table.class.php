@@ -3,8 +3,8 @@ abstract class Table implements Iterator {
 private $_container=array();
 protected $_position = 0;
 protected $sql;
-	public function __construct($where="",$params=array(),$limit=""){
-		$this->sql.=$where.$limit;
+	public function __construct($where="",$params=array(),$limit="",$order_by=""){
+		$this->sql.=$where.$order_by.$limit;
 		$this->_container=Database::getInstance()->query($this->sql,$params,PDO::FETCH_ASSOC);
 		$this->_position = 0;
 	}

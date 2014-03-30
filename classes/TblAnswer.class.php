@@ -1,7 +1,7 @@
 <?php
  class TblAnswer extends Table {
 	public function __construct(){
-		$sql="select * from answer ";
+		$this->sql="select * from answer ";
 		parent::__construct();
 	}
 	
@@ -13,7 +13,7 @@
 		if ($id==0)
 		{
 			Database::getInstance()->query("insert into answer(answer_title,question_id,is_right) values(:title,:question_id,:is_right)"
-					,array(":title"=>$title,":question_id"=>$question_id,":is_right"=>$is_righjt));
+					,array(":title"=>$title,":question_id"=>$question_id,":is_right"=>$is_right));
 			$id=Database::getInstance()->lastInsertId();
 		}
 		return $id;

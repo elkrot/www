@@ -21,15 +21,13 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Администрирование <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Дисциплины</a></li>
-                <li><a href="#">Вопросы</a></li>
-                <li><a href="#">Тесты</a></li>
+                <li><a href="<?php echo SERVER_NAME_URL;?>?action=view&target=discipline">Дисциплины</a></li>
+				<li><a href="<?php echo SERVER_NAME_URL;?>?action=view&target=topic">Темы</a></li>
+                <li><a href="<?php echo SERVER_NAME_URL;?>?action=view&target=question">Вопросы</a></li>
+                <li><a href="<?php echo SERVER_NAME_URL;?>?action=view&target=test">Тесты</a></li>
                 <li class="divider"></li>
-
-               
 				<li class="dropdown-header">Импорт</li>
                 <li><a href="<?php echo SERVER_NAME_URL;?>?action=import">Импорт</a></li>
-                
               </ul>
             </li>
 			<?php } ?>
