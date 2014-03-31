@@ -21,5 +21,16 @@
 		}
 		return $id;
 	}
+	
+	public function GetQuestionHierarchy()
+	{
+		$ret = array();
+		foreach ($this as $value)
+		{
+			$ret[$value["discipline_title"]] [$value["topic_title"]] ["detail"][]=$value;
+		}
+	
+		return $ret;
+	}
 }
 ?>

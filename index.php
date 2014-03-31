@@ -29,14 +29,17 @@ if ($action == "view") {
 		case "question" :
 			$h2 = "Вопросы";
 			$tblQuestion = new TblQuestion();
+			$questionHierarchy = $tblQuestion->GetQuestionHierarchy();
 			break;
 		case "test" :
 			$h2 = "Тесты";
 			$tblTest = new TblQuestion();
+			
 			break;
 		case "answer" :
 			$h2 = "Ответы";
 			$tblAnswer = new TblAnswer();
+			
 			break;
 		case "topic" :
 			$h2 = "Темы";
