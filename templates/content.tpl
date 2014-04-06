@@ -3,10 +3,12 @@
 		<h2><?php echo $h2;?></h2>
 		</div>
     </div>
-    <?php
-$actions = array('list', 'view', 'edit','delete','import');
-$targets = array("tmp","discipline","question","answer","topic","test");
-if (in_array($action, $actions)&&in_array($target, $targets)){
-			require_once $action.ucfirst($target).".tpl";
-	} 
-    
+<div class="container">
+    <?php if (in_array($action, $actions)&&in_array($target, $targets)){?>
+	<div class="row">
+        <div class="col-md-12">		
+			<?php require_once $action.ucfirst($target).".tpl";?>
+        </div>
+	</div>			
+	<?php } ?>
+</div>	

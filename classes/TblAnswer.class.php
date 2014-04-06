@@ -1,7 +1,14 @@
 <?php
+/**
+ * Класс TblAnswer Класс ответов
+ *
+ *
+ * @author Ф.И.О. <e-mail>
+ * @version 1.0
+ */
  class TblAnswer extends Table {
 	public function __construct(){
-		$this->sql="select * from answer ";
+		$this->sql="select * from answer where 1=1 ";
 		parent::__construct();
 	}
 	

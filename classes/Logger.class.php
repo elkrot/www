@@ -1,7 +1,17 @@
 <?php
 //Logger::getInstance()->log($itm."::".$matches[2]."::".$matches[3]);
 require_once "./cnf/config.php";
+/**
+ * Класс Logger singleton класс ведения логов
+ *
+ * @author Ф.И.О. <e-mail>
+ * @version 1.0
+ */
 class Logger {
+	/**
+	 * Instance of the database class
+	 * @static Database $instance
+	 */	
 	private static $instance = NULL;
 	private static $config_log_file = CONFIG_LOG_FILE;
 	private $fp;

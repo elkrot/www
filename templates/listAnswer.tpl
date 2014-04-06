@@ -1,4 +1,7 @@
 <div class="container">
+<div class =" btn btn-default ">
+<?php echo Html::Ankor(Html::Link("answer","create"),"<span class=\"glyphicon glyphicon-plus-sign\"></span>
+<span class=\"glyphicon-class  \">Создать запись</span>"); ?></div>
 	<div class="row">
         <div class="col-md-12">
 			<table class="table table-bordered">

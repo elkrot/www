@@ -1,8 +1,15 @@
 <?php
- class TblTopic extends Table {
+/**
+ * Класс TblTopic Класс Темы
+ *
+ *
+ * @author Ф.И.О. <e-mail>
+ * @version 1.0
+ */
+ class TblTopic extends Table implements IHtmlHelpers{
 	public function __construct($where="",$params=array(),$limit="",$order_by=" order by t.discipline_id"){
 		$this->sql="select t . * , d.discipline_title FROM topic t 
-				LEFT JOIN discipline d ON t.discipline_id = d.id ";
+				LEFT JOIN discipline d ON t.discipline_id = d.id where 1=1 ";
 		parent::__construct($where,$params,$limit,$order_by);
 	}
 	
@@ -29,6 +36,15 @@
 			$ret[$value["discipline_title"]]["detail"][]=$value;
 		}
 		
+		return $ret;
+	}
+	public static function GetDataForSelect($params=array()){
+		$res = Database::getInstance()->query("select id,topic_title from topic where 1=1 ".Database::GetParamStr($params)
+				,$params,PDO::FETCH_ASSOC);
+		$ret = array();
+		foreach ($res as $itm){
+			$ret[$itm["id"]]=$itm["topic_title"];
+		}
 		return $ret;
 	}
 }

@@ -1,5 +1,12 @@
 <?php
- class TblDiscipline extends Table {
+/**
+ * Класс TblDiscipline Класс Дисциплины
+ *
+ *
+ * @author Ф.И.О. <e-mail>
+ * @version 1.0
+ */
+ class TblDiscipline extends Table implements IHtmlHelpers {
 	public function __construct($where="",$params=array(),$limit=""){
 		$this->sql="select * from discipline where 1=1 ";
 		parent::__construct($where,$params,$limit);
@@ -18,6 +25,15 @@
 			$id=Database::getInstance()->lastInsertId();
 		}
 		return $id;
+	}
+	public static function GetDataForSelect($params=array()){
+		$res = Database::getInstance()->query("select id,discipline_title from discipline  where 1=1 ".Database::GetParamStr($params)
+				,$params,PDO::FETCH_ASSOC);
+		$ret = array();
+		foreach ($res as $itm){
+			$ret[$itm["id"]]=$itm["discipline_title"];
+		}
+		return $ret;
 	}
 }
 ?>

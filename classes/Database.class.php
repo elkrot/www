@@ -41,7 +41,7 @@ class Database {
 			try{
 				self::$instance = new Database();
 			} catch (PDOException $e) {
-				echo 'Connection failed: ' . $e->getMessage();
+				Logger::getInstance()->log('Connection failed: ' . $e->getMessage());
 			}
 		}
 		return self::$instance;
@@ -85,6 +85,27 @@ class Database {
 	 */
 	public function lastInsertId(){
 		return $this->connection->lastInsertId();
+	}
+	
+	/**
+	 * Получить строку параметров
+	 *
+	 * @param $params string
+	 *        	id или массив доп параметров
+	 *
+	 * @return string
+	 */
+	static function GetParamStr($params) {
+		$ret = "";
+		if (is_array ( $params ) && (! empty ( $params ))) {
+			
+			foreach ( $params as $key => $value ) {
+				$ret .= " and ".$key . "=:" . $key;
+			}
+		} elseif (is_int ( $params )) {
+			$ret = ($params == "" ? "" : " and id=:id" );
+		}
+		return $ret;
 	}
 }
 ?>

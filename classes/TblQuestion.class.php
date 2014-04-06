@@ -1,10 +1,10 @@
 <?php
- class TblQuestion extends Table {
+ class TblQuestion extends Table implements IHtmlHelpers{
 	public function __construct($where="",$params=array(),$limit="",$order_by=" ORDER BY t.discipline_id, q.topic_id"){
 		$this->sql="select q . * , t.topic_title, t.discipline_id, d.discipline_title
 					FROM question q
 					LEFT JOIN topic t ON q.topic_id = t.id
-					LEFT JOIN discipline d ON t.discipline_id = d.id ";
+					LEFT JOIN discipline d ON t.discipline_id = d.id where 1=1 ";
 		parent::__construct($where,$params,$limit,$order_by);
 	}
 	
@@ -30,6 +30,15 @@
 			$ret[$value["discipline_title"]] [$value["topic_title"]] ["detail"][]=$value;
 		}
 	
+		return $ret;
+	}
+	public static function GetDataForSelect($params=array()){
+		$res = Database::getInstance()->query("select id,question_title from question  where 1=1 ".Database::GetParamStr($params)
+				,$params,PDO::FETCH_ASSOC);
+		$ret = array();
+		foreach ($res as $itm){
+			$ret[$itm["id"]]=$itm["question_title"];
+		}
 		return $ret;
 	}
 }
