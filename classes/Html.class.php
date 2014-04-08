@@ -71,9 +71,10 @@ class Html {
 			$data = $nclass::GetDataForSelect();
 
 			$ret = "<select class=\"form-control\" name=\"" . $target . "_select\">";
-			$ret .="<option disabled>Выберите значение</option>";
+			//$ret .="<option disabled>Выберите значение</option>";
+			
 			foreach ($data as $key => $value) {
-				$ret .= "<option ".($keySelected==$key?"selected":"")." value=\"".$key."\">".$value."</option>";	
+				$ret .= "<option  value=\"".$key."\" ".($keySelected==$key?" selected":"")." >".$value."</option>";	
 			}
 
 			$ret .= "</select>";

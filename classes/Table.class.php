@@ -47,5 +47,6 @@ public function __destruct(){
 	{
 		return isset($this->_container[$this->_position]);
 	}
+	 
 }
 ?>

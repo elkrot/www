@@ -10,8 +10,9 @@ switch ($action ) {
 		break;
 	case "view":
 		$h2 = "Просмотр ".$h2;
-		$where="";
-		$params=array();
+		$where =" and t.id=:id";
+		$params = array(":id"=>$id_get);
+		$testDetail = TblTest::GetTestDetal($id_get);
 		break;
 	case "edit":
 		$h2 = "Корректировка ".$h2;
@@ -24,9 +25,22 @@ switch ($action ) {
 		$params = array(":id"=>$id_get);
 		break;
 	case "create":
+		$where ="";
+		$params =array();
 		$h2 = "Создание новый ".$h2;
 		break;
 }
 
 $tblTest = new TblTest($where,$params);
-$testHierarchy = $tblTest->GetTestHierarchy();
+if (is_array ( $targets ) && in_array ( $target, $targets )) {
+
+	
+	if (empty ( $_POST )) {
+		$testHierarchy = $tblTest->GetTestHierarchy();
+	} else {
+		$ret = $tblTest::$action ( $_POST );
+		if ($ret){
+			header ( 'Location: ' . SERVER_NAME_URL . "?target=".$target."&action=list" );
+		}
+	}
+}

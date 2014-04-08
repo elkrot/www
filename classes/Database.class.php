@@ -72,8 +72,7 @@ class Database {
 				return $results;
 			}
 		} catch (PDOException $e) {
-			echo 'Query failed: ' . $e->getMessage();
-			echo '<br />Query : ' . $query;
+			Logger::getInstance()->log( 'Query failed: ' . $e->getMessage(). '<br />Query : ' . $query);
 		}
 		return 1;
 	}
