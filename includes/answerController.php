@@ -15,12 +15,12 @@ switch ($action ) {
 		break;
 	case "edit":
 		$h2 = "Корректировка ".$h2;
-		$where =" and id=:id";
+		$where =" and a.id=:id";
 		$params = array(":id"=>$id_get);
 		break;
 	case "delete":
 		$h2 = "Удаление ".$h2;
-		$where =" and id=:id";
+		$where =" and a.id=:id";
 		$params = array(":id"=>$id_get);
 		break;
 	case "create":
@@ -28,3 +28,19 @@ switch ($action ) {
 		break;
 }
 $tblAnswer = new TblAnswer($where,$params);
+foreach ($tblAnswer as $value) {
+	$question_id=$value["question_id"];
+}
+if (is_array ( $targets ) && in_array ( $target, $targets )) {
+	if (empty ( $_POST )) {
+		foreach ($tblAnswer as $itm) {
+			$question_title=$itm["question_title"];
+		}
+	} else {
+		Logger::getInstance()->log($action." ".$target);
+		$ret = $tblAnswer->$action ( $_POST );
+		if ($ret){
+			header ( 'Location: ' . SERVER_NAME_URL . "?target=question&action=view&id=".$question_id );
+		}
+	}
+}

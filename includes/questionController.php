@@ -12,9 +12,10 @@ switch ($action) {
 		$params = array ();
 		break;
 	case "view" :
-		$h2 = "Просмотр " . $h2;
-		$where = "";
-		$params = array ();
+		$h2 = "Просмотр ответов" ;
+		$where = " and q.id = :id";
+		$params = array ( ":id"=>$id_get );
+		$tblAnswer = new TblAnswer(" and question_id=:question_id ",array(":question_id"=>$id_get));
 		break;
 	case "edit" :
 		$h2 = "Корректировка " . $h2;

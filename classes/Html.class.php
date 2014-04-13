@@ -25,8 +25,10 @@ class Html {
 		if ($target == "" && $action == "" && empty ( $params )) {
 			$param_str = "";
 		} else {
-			$param_str = "?" . ($target == "" ? "" : "target=" . $target . ($action == "" ? "" : "&action=" . $action . self::GetParamStr ( $params )));
+			$param_str = "?" . ($target == "" ? "" : "target=" . $target . 
+					($action == "" ? "" : "&action=" . $action . self::GetParamStr ( $params )));
 		}
+		
 		return SERVER_NAME_URL . $param_str;
 	}
 	/**
@@ -65,10 +67,10 @@ class Html {
 		
 		return $ret;
 	}
-	static function Select($target, $keySelected) {
+	static function Select($target, $keySelected="",$params=array()) {
 		$nclass = "Tbl" . ucfirst ( $target );
 		if (is_subclass_of ( $nclass, 'IHtmlHelpers' )) {
-			$data = $nclass::GetDataForSelect();
+			$data = $nclass::GetDataForSelect($params);
 
 			$ret = "<select class=\"form-control\" name=\"" . $target . "_select\">";
 			//$ret .="<option disabled>Выберите значение</option>";
@@ -80,5 +82,15 @@ class Html {
 			$ret .= "</select>";
 		}
 		return $ret;
+	}
+	
+	public static function Hidden($target="",$value=""){
+		return "<input hidden name=\"hidden_".$target."\" value=\"".$value."\" >";
+	}
+	
+	public static function Checkbox($target,$value,$html_class=""){
+		return "<input type=\"checkbox\" 
+				".(!empty($value)?"checked":"")."
+				name=\"check_box_".$target."\" value=\"+\" class=\"".$html_class."\">";
 	}
 }

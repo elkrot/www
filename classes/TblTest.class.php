@@ -6,7 +6,7 @@
  * @author Ф.И.О. <e-mail>
  * @version 1.0
  */
- class TblTest extends Table {
+ class TblTest extends Table  implements IHtmlHelpers{
 	public function __construct($where="",$params=array(),$limit="",$order_by=" order by t.discipline_id"){
 		$this->sql="select t . * , d.discipline_title FROM test t
 LEFT JOIN discipline d ON d.id = t.discipline_id where 1=1 ";
@@ -44,6 +44,16 @@ LEFT JOIN discipline d ON d.id = t.discipline_id where 1=1 ";
 	public static function GetTestDetal($id){
 		$tblTestDetail = new TblTestDetail(" and d.test_id=:test_id",array(":test_id"=>$id));
 		return $tblTestDetail ;
+	}
+	
+	public static function GetDataForSelect($params=array()){
+		$res = Database::getInstance()->query("select id,test_title from test  where 1=1 ".Database::GetParamStr($params)
+				,$params,PDO::FETCH_ASSOC);
+		$ret = array();
+		foreach ($res as $itm){
+			$ret[$itm["id"]]=$itm["test_title"];
+		}
+		return $ret;
 	}
 }
 ?>

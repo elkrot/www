@@ -12,7 +12,7 @@ switch ($action ) {
 		$h2 = "Просмотр ".$h2;
 		$where =" and t.id=:id";
 		$params = array(":id"=>$id_get);
-		$testDetail = TblTest::GetTestDetal($id_get);
+		$tblTestDetail = TblTest::GetTestDetal($id_get);
 		break;
 	case "edit":
 		$h2 = "Корректировка ".$h2;

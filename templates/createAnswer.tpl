@@ -1,15 +1,5 @@
 <form id = "create_form" method ="POST">
 	<div class="input-group input-group-lg">
-		<span class="input-group-addon">Дисциплина</span>
-		<?php echo Html::Select("discipline", "");?>
-	</div>
-	</br>
-	<div class="input-group input-group-lg">
-		<span class="input-group-addon">Тема</span>
-		<?php echo Html::Select("topic", "");?>
-	</div>
-	</br>
-	<div class="input-group input-group-lg">
 		<span class="input-group-addon">Вопрос</span>
 	<?php echo Html::Select("question", "");?>
 	</div>
