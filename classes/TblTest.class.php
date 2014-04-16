@@ -46,7 +46,7 @@ LEFT JOIN discipline d ON d.id = t.discipline_id where 1=1 ";
 		return $tblTestDetail ;
 	}
 	
-	public static function GetDataForSelect($params=array()){
+	public static function GetDataForSelect($params=array(),$where=""){
 		$res = Database::getInstance()->query("select id,test_title from test  where 1=1 ".Database::GetParamStr($params)
 				,$params,PDO::FETCH_ASSOC);
 		$ret = array();

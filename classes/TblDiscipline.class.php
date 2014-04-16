@@ -26,7 +26,7 @@
 		}
 		return $id;
 	}
-	public static function GetDataForSelect($params=array()){
+	public static function GetDataForSelect($params=array(),$where=""){
 		$res = Database::getInstance()->query("select id,discipline_title from discipline  where 1=1 ".Database::GetParamStr($params)
 				,$params,PDO::FETCH_ASSOC);
 		$ret = array();

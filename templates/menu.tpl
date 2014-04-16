@@ -14,7 +14,12 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
          
-            <li><a href="#about">Тестирование</a></li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Тестирование<b class="caret"></b></a>
+			<ul class="dropdown-menu">
+			<li class="dropdown"><a href="<?php echo Html::Link("test","goto");?>">Перейти к тестам</a></li>
+			<li class="dropdown"><a href="<?php echo Html::Link("statistics","list");?>">Мои результаты</a></li>
+			</ul>
+			</li>
             <?php
             if (Authentication::isAdmin()){
             ?>

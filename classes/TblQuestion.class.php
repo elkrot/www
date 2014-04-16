@@ -32,10 +32,11 @@
 	
 		return $ret;
 	}
-	public static function GetDataForSelect($params=array()){
-		$res = Database::getInstance()->query("select q.id,q.question_title from question q
-left join topic t on q.topic_id = t.id
-				where 1=1 ".Database::GetParamStr($params)
+	public static function GetDataForSelect($params=array(),$where){
+		$strsql = "select q.id,q.question_title from question q left join topic t on q.topic_id = t.id
+where 1=1 ".Database::GetParamStr($params).$where ;
+
+		$res = Database::getInstance()->query($strsql
 				,$params,PDO::FETCH_ASSOC);
 		$ret = array();
 		foreach ($res as $itm){

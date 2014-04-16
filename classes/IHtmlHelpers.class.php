@@ -1,6 +1,6 @@
 <?php
  interface IHtmlHelpers
 {
-	public static function GetDataForSelect($params);
+	public static function GetDataForSelect($params,$where);
 	
 }

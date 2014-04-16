@@ -42,7 +42,7 @@ if (is_array ( $targets ) && in_array ( $target, $targets )) {
 	} else {
 		$ret = $tblTestDetail::$action ( $_POST );
 		if ($ret){
-			header ( 'Location: ' . SERVER_NAME_URL . "?target=".$target."&action=list" );
+			header ( 'Location: ' . SERVER_NAME_URL . "?target=test&action=view&id=".(int)$test_id_get );
 		}
 	}
 }

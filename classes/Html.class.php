@@ -67,10 +67,10 @@ class Html {
 		
 		return $ret;
 	}
-	static function Select($target, $keySelected="",$params=array()) {
+	static function Select($target, $keySelected="",$params=array(),$where="") {
 		$nclass = "Tbl" . ucfirst ( $target );
 		if (is_subclass_of ( $nclass, 'IHtmlHelpers' )) {
-			$data = $nclass::GetDataForSelect($params);
+			$data = $nclass::GetDataForSelect($params,$where);
 
 			$ret = "<select class=\"form-control\" name=\"" . $target . "_select\">";
 			//$ret .="<option disabled>Выберите значение</option>";
