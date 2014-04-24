@@ -50,7 +50,7 @@ class TestToUser extends Table  {
 	}
 	
 	public static function IsAnswerInPost($post=array(),$question_id=0,$answer_id=0) {
-		var_dump($post[$question_id]);
+		
 		return (is_array ( $post ) && in_array ( $answer_id, $post[$question_id] )) ;
 	}
 }

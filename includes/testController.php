@@ -41,8 +41,7 @@ switch ($action) {
 		$h2 = "Тестирование ";
 		break;
 	case "start" :
-		session_start ();
-		$_SESSION ["start_time"] = time ();
+		
 		
 		$testToUser = new TestToUser ( " and t.id=:test_id ", array (
 				":test_id" => $id_get 
@@ -60,7 +59,7 @@ switch ($action) {
          success: function(data) {
              data = data.split(':'); 
 if (data[0]<=0 && data[1]<=0 && data[2]<=0){
-alert(\"Тест завершен.\");	
+
 	f=document.getElementById('test_form');
     if(f){
     f.submit();
@@ -73,6 +72,10 @@ alert(\"Тест завершен.\");
      });
  }
 </script>";
+session_start ();
+		$currentStatisticsId=TblStatistics::GetStatisticsID();
+		$_SESSION ["currentStatisticsId"] = $currentStatisticsId ;		
+		$_SESSION ["start_time"]=time();
 		break;
 	case "finish" :
 		if (! empty ( $_POST )) {
@@ -83,7 +86,10 @@ alert(\"Тест завершен.\");
 					":test_id" => $id_get 
 			) );
 			$testToUserHierarhy = $testToUser->GetTestToUserHierarchy ($_POST);
-			
+			session_start ();
+			$currentStatisticsId = $_SESSION ["currentStatisticsId"]   ;
+			$_SESSION ["currentStatisticsId"]=0;
+			TblStatistics::SetStatistics($currentStatisticsId);
 		}
 		break;
 }
