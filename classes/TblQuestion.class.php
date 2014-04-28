@@ -52,9 +52,10 @@ where 1=1 ".Database::GetParamStr($params).$where ;
 	}
 	
 	public function create($post){
+
 		Database::getInstance()->query("insert into question(question_title,topic_id,rating_cost)
 					values(:title,:topic_id,:rating)"
-				,array(":title"=>$post["title"],":topic_id"=>$post["topic_select"],":rating_cost"=>$post["rating"]));
+				,array(":title"=>$post["title"],":topic_id"=>$post["topic_select"],":rating"=>$post["rating"]));
 		return true;
 	}
 	public function delete($post){

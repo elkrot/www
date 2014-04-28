@@ -1,4 +1,5 @@
 <?php
+
 require_once "./classes/autoload.php";
 require_once "./cnf/config.php";
 $action = isset ( $_GET ["action"] ) ? htmlspecialchars ( $_GET ["action"] ) : "";

@@ -10,7 +10,11 @@
 	</div>
 	</br>
 	<div class="input-group input-group-lg">
-		<input name = "title" type="text" class="form-control" placeholder="Наименование дисциплины">
+		<input name = "rating" type="text" class="form-control" placeholder="Рейтинг">
+
+	</div>
+	<div class="input-group input-group-lg">
+		<input name = "title" type="text" class="form-control" placeholder="Вопрос">
 		<span class="input-group-btn">
 			<button type="submit" class="btn btn-success"> Сохранить<button\>
 		</span>
