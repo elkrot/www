@@ -86,10 +86,11 @@ session_start ();
 					":test_id" => $id_get 
 			) );
 			$testToUserHierarhy = $testToUser->GetTestToUserHierarchy ($_POST);
+		
 			session_start ();
 			$currentStatisticsId = $_SESSION ["currentStatisticsId"]   ;
 			$_SESSION ["currentStatisticsId"]=0;
-			TblStatistics::SetStatistics($currentStatisticsId);
+			TblStatistics::SetStatistics($currentStatisticsId,$testToUser->GetRating(),$id_get,serialize($testToUserHierarhy));
 		}
 		break;
 }

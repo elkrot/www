@@ -11,7 +11,9 @@
 	static function getUserId() {
 		return 1;
 	}
-	
+	static function getUserName(){
+		return "User";
+	}
 	static function isAdmin() {
 		return true;
 	}

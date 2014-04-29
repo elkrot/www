@@ -11,6 +11,7 @@
  */
 //test_id 	question_id 	sort 	test_title 	question_title 	answer_title 	is_right 	answer_id
 class TestToUser extends Table  {
+	private $rating=0;
 	public function __construct($where="",$params=array(),$limit="",$order_by=" order by t.id, q.id , l.sort"){
 		$this->sql="select l.*, t.test_title, r.id answer_id, q.question_title
 					, r.answer_title, r.is_right, q.rating_cost FROM test_detail l left join test t on l.test_id = t.id 
@@ -54,26 +55,26 @@ class TestToUser extends Table  {
 			$ret[$test_id]["questions"][$question_id]["wrong_user_answers"]:0;
 			$ret[$test_id]["questions"][$question_id]["wrong_user_answers"]=$wa
 			 +(int)(($value["is_right"] != $user_choice)?1:0);
-			$ret[$test_id]["questions"][$question_id]["rating_cost"]=$val["rating_cost"];
+			$ret[$test_id]["questions"][$question_id]["rating_cost"]=$value["rating_cost"];
 			
-			Logger::getInstance()->log($val["rating_cost"]);
+		
 		
 		}
 		
 		foreach ($ret as &$test){
-			
 			foreach ($test["questions"] as $questions){
-				
 				if ($questions["wrong_user_answers"]==0){
-					
 					$total_rating=isset($test["total_rating"]) ?$test["total_rating"]:0;
 					$test["total_rating"]=$total_rating+$questions["rating_cost"];
 				}
 			}
+			$this->rating=$test["total_rating"];
 		}
 		return $ret;
 	}
-	
+	public function GetRating(){
+		return $this->rating;
+	}
 	public static function IsAnswerInPost($post=array(),$question_id=0,$answer_id=0) {
 		
 		return (is_array ( $post[$question_id] ) && in_array ( $answer_id, $post[$question_id] )) ;

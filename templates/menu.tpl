@@ -37,6 +37,9 @@
             </li>
 			<?php } ?>
           </ul>
+		  <ul class="nav navbar-nav navbar-right">
+		  <li style ="color:white">Добро пожаловать , <?php echo Authentication::GetUserName();?></li>
+		  </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
