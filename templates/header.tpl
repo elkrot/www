@@ -5,9 +5,12 @@
 <title>test</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link rel="stylesheet" href="../css/style.css" type="text/css"
-	media="screen, projection" />
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen, projection" />
 <link href="css/bootstrap.min.css" rel="stylesheet">
-
+<link rel="stylesheet" href="../css/bootstrap3-wysihtml5.min.css" type="text/css"
+	media="screen, projection" />
+	
+	<link rel="stylesheet" href="../css/bootstrap-theme.min.css" type="text/css"
+	media="screen, projection" />
 </head>
 <body>

@@ -1,4 +1,5 @@
 <?php
+$version = explode('.', PHP_VERSION);
 
 require_once "./classes/autoload.php";
 require_once "./cnf/config.php";

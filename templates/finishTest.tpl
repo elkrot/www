@@ -10,7 +10,7 @@ echo "<h2>Набрано баллов: ".$test["total_rating"]."<h2>";
 		echo "<h2>".$question["question_title"]."</h2>";
 		echo "<ul>";
 			echo $question["wrong_user_answers"]==0?" вопрос засчитан":""."</br>";
-			echo $question["wrong_user_answers"];
+			
 			foreach ($question["answers"] as $answer_id=>$answer)
 			{
 			$type = ( $question["right_answers"]>1)?"checkbox":"radio";

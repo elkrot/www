@@ -13,10 +13,6 @@
 		<input name = "rating" type="text" class="form-control" placeholder="Рейтинг">
 
 	</div>
-	<div class="input-group input-group-lg">
-		<input name = "title" type="text" class="form-control" placeholder="Вопрос">
-		<span class="input-group-btn">
-			<button type="submit" class="btn btn-success"> Сохранить<button\>
-		</span>
-	</div>
+	<textarea class="textarea" name = "title" placeholder="Введите вопрос ..." style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;"></textarea>
+	<button class="btn btn-success" type="submit" name="submit_button" value="edit"><span class="glyphicon  glyphicon-floppy-saved"></span> Сохранить</button>
 </form>			

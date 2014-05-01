@@ -4,12 +4,12 @@
 <?php foreach ($testToUserHierarhy as $test)
 {
 echo "<h1>".$test["test_title"]."</h1>";
-
+ shuffle(&$test["questions"]);
 	foreach ($test["questions"] as $question_id =>$question)
 	{
 		echo "<h2>".$question["question_title"]."</h2>";
 		echo "<ul>";
-
+ shuffle(&$question["answers"]);
 			foreach ($question["answers"] as $answer_id=>$answer)
 			{
 			$type = ($question["total_answer"]>2 && $question["right_answers"]>1)?"checkbox":"radio";

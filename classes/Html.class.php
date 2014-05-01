@@ -42,8 +42,8 @@ class Html {
 	 *        	
 	 * @return string
 	 */
-	static function Ankor($link, $title) {
-		return "<a href=\"" . $link . "\">" . $title . "</a>";
+	static function Ankor($link, $title, $add="") {
+		return "<a href=\"" . $link . "\"  ".$add.">" . $title . "</a>";
 	}
 	/**
 	 * Получить строку параметров
@@ -71,7 +71,7 @@ class Html {
 		$nclass = "Tbl" . ucfirst ( $target );
 		if (is_subclass_of ( $nclass, 'IHtmlHelpers' )) {
 			$data = $nclass::GetDataForSelect($params,$where);
-
+		//	$data = call_user_func(array($nclass,"GetDataForSelect"),$params,$where);
 			$ret = "<select class=\"form-control\" name=\"" . $target . "_select\">";
 			//$ret .="<option disabled>Выберите значение</option>";
 			
