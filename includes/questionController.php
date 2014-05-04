@@ -1,4 +1,11 @@
 <?php
+/**
+ * Контроллер Вопросов
+ * 
+ * @package Controllers
+ * @author Ф.И.О. <e-mail>
+ * @version 1.0
+ */
 $h2 = "Вопросы";
 $id_get = isset ( $_GET ["id"] ) ? $_GET ["id"] : 0;
 foreach ( $_POST as $key => $value ) {

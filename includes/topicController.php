@@ -1,4 +1,11 @@
 <?php
+/**
+ * Контроллер Тем
+ *
+ * @package Controllers
+ * @author Ф.И.О. <e-mail>
+ * @version 1.0
+ */
 $h2 = "Темы";
 $id_get = isset($_GET["id"])?$_GET["id"]:0;
 
@@ -10,8 +17,9 @@ switch ($action ) {
 		break;
 	case "view":
 		$h2 = "Просмотр ".$h2;
-		$where="";
-		$params=array();
+		$where = " and t.id =:id";
+		$params = array(":id"=>$id_get);
+		$tblQuestion = new TblQuestion(" and topic_id=:topic_id",array(":topic_id"=>$id_get));
 		break;
 	case "edit":
 		$h2 = "Корректировка ".$h2;
@@ -30,3 +38,15 @@ switch ($action ) {
 
 $tblTopic = new TblTopic($where,$params);
 $topicHierarchy = $tblTopic->GetTopicHierarchy();
+
+if (is_array ( $targets ) && in_array ( $target, $targets )) {
+	if (empty ( $_POST )) {
+
+	} else {
+
+		$ret = $tblTopic->$action ( $_POST );
+		if ($ret){
+			header ( 'Location: ' . SERVER_NAME_URL . "?target=topic&action=list" );
+		}
+	}
+}

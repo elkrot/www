@@ -6,9 +6,9 @@
 	</br>
 	<div class="input-group input-group-lg">
 		<span class="input-group-addon">Тема</span>
-		<input name = "TopicNaim" type="text" class="form-control" placeholder="Наименование темы">
+		<input name = "title" type="text" class="form-control" placeholder="Наименование темы">
 		<span class="input-group-btn">
-			<button type="submit" class="btn btn-success"> Сохранить<button\>
+			<button type="submit" class="btn btn-success"> Сохранить</button>
 		</span>
 	</div>
 </form>

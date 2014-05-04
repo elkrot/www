@@ -1,7 +1,5 @@
 <form id = "edit_form" method = "post" >
-
-
-		
+<?php echo Html::Hidden("id",$id_get);?>
 			<?php foreach ($tblQuestion as $itm){?>
 			<input hidden name="id" value ="<?php echo  $itm["id"];?>" type ="text"/>
 				<div class="input-group input-group-lg">

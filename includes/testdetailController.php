@@ -1,4 +1,9 @@
 <?php
+/**
+ * Контроллер Подробности тестов
+ * 
+  * @package Controllers
+ */
 $h2 = "Вопросы теста";
 $test_id_get = isset($_GET["test_id"])?$_GET["test_id"]:0;
 $id_get = isset($_GET["id"])?$_GET["id"]:0;

@@ -1,4 +1,8 @@
 <?php
+/**
+ * Контроллер Тестов
+ * @package Controllers
+ */
 $h2 = "Тесты";
 $id_get = isset ( $_GET ["id"] ) ? $_GET ["id"] : 0;
 

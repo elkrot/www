@@ -1,10 +1,33 @@
 <?php
+/**
+ * Класс TblTmp Класс Темповая таблица используется для загрузки данных
+ *
+ *
+ * @author Ф.И.О. <e-mail>
+ * @version 1.0
+ * @package Tables
+ * @category Models
+ */
+
+/**
+ * Класс TblTmp Класс Темповая таблица используется для загрузки данных
+ *
+ */
  class TblTmp extends Table {
-	public function __construct($where="",$params=array(),$limit=""){
+ 	/**
+ 	 * Конструктор 
+ 	 * 
+ 	 * @param string $where Условие отбора
+ 	 * @param array $params Параметры условий отбора
+ 	 * @param string $limit Лимит данных
+ 	 */
+	public function __construct($where="",$params=array(),$limit="",$orderby=""){
 		$this->sql="select * from tmp where 1=1 ";
-		parent::__construct($where,$params,$limit);
+		parent::__construct($where,$params,$limit,$orderby);
 	}
-	
+	/**
+	 * Экспорт данных
+	 */
 	public function ExportData()
 	{
 		foreach ( $this as $itm ) {

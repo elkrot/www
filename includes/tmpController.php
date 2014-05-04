@@ -1,6 +1,13 @@
 <?php
+/**
+ * Контроллер Темповой таблицы
+ * 
+ * @package Controllers
+ * @author Ф.И.О. <e-mail>
+ * @version 1.0
+ */
 switch ($action) {
-	case "view" :
+	case "list" :
 		$h2 = "Предварительный просмотр данных из файла импорта";
 		$tbltmp = new TblTmp ( " and id = :id", array (
 				":id" => $temp_id 

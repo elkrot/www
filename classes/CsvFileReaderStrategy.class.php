@@ -6,6 +6,12 @@
  *
  * @author Ф.И.О. <e-mail>
  * @version 1.0
+ * @package Import
+ * @category Strategy
+ */
+
+/**
+ * Класс стратегии обработки данных
  */
 class CsvFileReaderStrategy extends ReaderStrategy
 {

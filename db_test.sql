@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Апр 30 2014 г., 00:23
+-- Время создания: Май 05 2014 г., 01:59
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `answer` (
   PRIMARY KEY (`id`),
   KEY `question_id` (`question_id`),
   KEY `question_id_2` (`question_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=187 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=214 ;
 
 -- --------------------------------------------------------
 
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `discipline` (
   `discipline_title` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `title` (`discipline_title`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 -- --------------------------------------------------------
 
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `question` (
   `rating_cost` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `topic_id` (`topic_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=50 ;
 
 -- --------------------------------------------------------
 
@@ -84,23 +84,7 @@ CREATE TABLE IF NOT EXISTS `statistics` (
   `test_id` int(11) NOT NULL,
   `serialized` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=78 ;
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `statistics_detail`
---
-
-DROP TABLE IF EXISTS `statistics_detail`;
-CREATE TABLE IF NOT EXISTS `statistics_detail` (
-  `statistics_id` int(11) NOT NULL,
-  `question_id` int(11) NOT NULL,
-  `answer_id` int(11) NOT NULL,
-  PRIMARY KEY (`statistics_id`,`question_id`,`answer_id`),
-  KEY `question_id` (`question_id`),
-  KEY `answer_id` (`answer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=101 ;
 
 -- --------------------------------------------------------
 
@@ -114,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `test` (
   `test_title` varchar(100) NOT NULL,
   `discipline_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 -- --------------------------------------------------------
 
@@ -148,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `tmp` (
   `userid` int(11) NOT NULL,
   `is_saved` varchar(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
 
 -- --------------------------------------------------------
 
@@ -163,7 +147,7 @@ CREATE TABLE IF NOT EXISTS `topic` (
   `discipline_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `discipline_id` (`discipline_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=116 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=123 ;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
@@ -180,14 +164,6 @@ ALTER TABLE `answer`
 --
 ALTER TABLE `question`
   ADD CONSTRAINT `question_ibfk_1` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`id`);
-
---
--- Ограничения внешнего ключа таблицы `statistics_detail`
---
-ALTER TABLE `statistics_detail`
-  ADD CONSTRAINT `statistics_detail_ibfk_1` FOREIGN KEY (`question_id`) REFERENCES `question` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `statistics_detail_ibfk_2` FOREIGN KEY (`answer_id`) REFERENCES `answer` (`id`),
-  ADD CONSTRAINT `statistics_detail_ibfk_3` FOREIGN KEY (`statistics_id`) REFERENCES `statistics` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `test_detail`

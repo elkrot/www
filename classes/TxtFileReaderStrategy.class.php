@@ -6,6 +6,14 @@
  *
  * @author Ф.И.О. <e-mail>
  * @version 1.0
+ * @package Import
+ * @category Strategy
+ */
+
+/**
+ * Класс TxtFileReaderStrategy Конкретный класс стратегии обработки данных txt файлов
+ *
+ * Класс стратегии обработки данных
  */
 class TxtFileReaderStrategy extends ReaderStrategy
 {
@@ -20,8 +28,9 @@ public function getData()
 			while (($buffer = fgets($this->handle, 4096)) !== false) {
 				$ar = $this->get_level($buffer);
 				$new_lvl = $ar[0];
-				
+				Logger::getInstance()->log("-xxx-".$new_lvl."</br>");
 				if ($new_lvl == 1){
+					
 					$discipline = $ar[2];
 				}elseif ($new_lvl == 2){
 					$topic = $ar[2];
@@ -53,13 +62,15 @@ public function getData()
 	 */	
 	function get_level($stroka)
 	{
+		
 		$ar = array("Дисциплина"=>1,"Тема"=>2,"Вопрос"=>3,"Ответ"=>4);
 		foreach ($ar as $key=>$itm) {
-					$pattern = "/^\[(".$key.")(\+?)\]:(.*|\s*)$/i";
+					$pattern = "/\[(".$key.")(\+?)\]:(.*|\s*)$/i";
 					preg_match( $pattern, $stroka, $matches );
-					
+					Logger::getInstance()->log("-ddd-".$pattern. $stroka.serialize($matches)."</br>");
 					if ($matches[1]==$key)
 					{
+						
 						return array($itm,$matches[2],$matches[3]);
 					}
 		}

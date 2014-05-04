@@ -5,18 +5,25 @@
  *
  * @author Ф.И.О. <e-mail>
  * @version 1.0
+ * @package Utils
+ * @category Html
+ */
+
+/**
+ * Класс Html Статический класс для формирования html элементов
+ *
  */
 class Html {
 	/**
 	 * Получить адрес ссылки
 	 *
-	 * @param $target string
+	 * @param string $target
 	 *        	Цель действия
 	 *        	
-	 * @param $action string
+	 * @param string $action
 	 *        	действие
 	 *        	
-	 * @param $params string
+	 * @param string $params
 	 *        	id или массив доп параметров
 	 *        	
 	 * @return string
@@ -34,10 +41,10 @@ class Html {
 	/**
 	 * Получить Html элемент anchor
 	 *
-	 * @param $link string
+	 * @param string $link
 	 *        	Цель действия
 	 *        	
-	 * @param $title string
+	 * @param string $title
 	 *        	действие
 	 *        	
 	 * @return string
@@ -48,7 +55,7 @@ class Html {
 	/**
 	 * Получить строку параметров
 	 *
-	 * @param $params string
+	 * @param string $params
 	 *        	id или массив доп параметров
 	 *        	
 	 * @return string
@@ -67,6 +74,21 @@ class Html {
 		
 		return $ret;
 	}
+	/**
+	 * Получить HTML разметку для элемента select
+	 *
+	 * @param string $target наименование таблицы
+	 * 
+	 * @param string $keySelected значение выбора
+	 * 
+	 * @param array $params параметры для отбора данных
+	 * 
+	 * @param string $where доп условие отбора данных
+	 *
+	 * @return string
+	 * 
+	 * @static
+	 */
 	static function Select($target, $keySelected="",$params=array(),$where="") {
 		$nclass = "Tbl" . ucfirst ( $target );
 		if (is_subclass_of ( $nclass, 'IHtmlHelpers' )) {
@@ -76,18 +98,36 @@ class Html {
 			//$ret .="<option disabled>Выберите значение</option>";
 			
 			foreach ($data as $key => $value) {
-				$ret .= "<option  value=\"".$key."\" ".($keySelected==$key?" selected":"")." >".$value."</option>";	
+				$ret .= "<option  value=\"".$key."\" ".($keySelected==$key?" selected=\"selected\"":"")." >".$value."</option>";	
 			}
 
 			$ret .= "</select>";
 		}
 		return $ret;
 	}
-	
+	/**
+	 * Получить HTML разметку для элемента Hidden
+	 *
+	 * @param string $target наименование таблицы 
+	 * 
+	 * @param string $value значение
+	 *
+	 * @return string
+	 */	
 	public static function Hidden($target="",$value=""){
 		return "<input hidden name=\"hidden_".$target."\" value=\"".$value."\" >";
 	}
-	
+	/**
+	 * Получить HTML разметку для элемента Checkbox
+	 *
+	 * @param string $target наименование таблицы
+	 *
+	 * @param string $value значение
+	 * 
+	 * @param string $html_class css класс
+	 *
+	 * @return string
+	 */	
 	public static function Checkbox($target,$value,$html_class=""){
 		return "<input type=\"checkbox\" 
 				".(!empty($value)?"checked":"")."

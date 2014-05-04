@@ -6,7 +6,16 @@
 *
 * @author Ф.И.О. <e-mail>
 * @version 1.0
+* @package Import
+* @category Strategy
 */
+
+/**
+ * Класс ReaderStrategy Стратегия чтения
+ *
+ * Абстрактный класс для родитель для классов стратегий чтения
+ *
+ */
 abstract class ReaderStrategy
 {
 /**

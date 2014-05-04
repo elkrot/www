@@ -1,17 +1,33 @@
 <?php 
-
-
-
 /**
  * Класс TestToUser Класс тестов-вопросов и ответов для отображения пользователю
  *
  *
  * @author Ф.И.О. <e-mail>
  * @version 1.0
+ * @package Tests
+ * @category TestToUser
  */
 //test_id 	question_id 	sort 	test_title 	question_title 	answer_title 	is_right 	answer_id
+
+/**
+ * Класс TestToUser Класс тестов-вопросов и ответов для отображения пользователю
+ *
+ */
 class TestToUser extends Table  {
+	/**
+	 * Оценка
+	 * @var number
+	 */
 	private $rating=0;
+	/**
+	 * Конструктор
+	 * 
+	 * @param string $where Условие отбора
+	 * @param array $params Массив параметров
+	 * @param string $limit Лимит данных
+	 * @param string $order_by Сортировка
+	 */
 	public function __construct($where="",$params=array(),$limit="",$order_by=" order by t.id, q.id , l.sort"){
 		$this->sql="select l.*, t.test_title, r.id answer_id, q.question_title
 					, r.answer_title, r.is_right, q.rating_cost FROM test_detail l left join test t on l.test_id = t.id 
@@ -19,7 +35,11 @@ class TestToUser extends Table  {
 					left join answer r on r.question_id = q.id where 1=1 ";
 		parent::__construct($where,$params,$limit,$order_by);
 	}
-
+/**
+ * Вернуть иерархический массив Теста с вопросами, ответами для отображения
+ * @param unknown $post
+ * @return Ambigous <multitype:, unknown>
+ */
 	public function GetTestToUserHierarchy($post = array())
 	{
 		$ret = array();
@@ -72,9 +92,19 @@ class TestToUser extends Table  {
 		}
 		return $ret;
 	}
+	/**
+	 * Вернуть оценку
+	 */
 	public function GetRating(){
 		return $this->rating;
 	}
+	/**
+	 * Находится ли ответ в массиве $_POST
+	 * @param array $post массив $_POST
+	 * @param number $question_id Первичный ключ таблицы вопросов
+	 * @param number $answer_id Первичный ключ таблицы ответов
+	 * @return boolean
+	 */
 	public static function IsAnswerInPost($post=array(),$question_id=0,$answer_id=0) {
 		
 		return (is_array ( $post[$question_id] ) && in_array ( $answer_id, $post[$question_id] )) ;

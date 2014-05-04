@@ -6,6 +6,15 @@
  *
  * @author Ф.И.О. <e-mail>
  * @version 1.0
+ * @package Import
+ * @category Strategy
+ */
+
+/**
+ * Класс TestDataReader Сохранение закачаных данных
+ *
+ * Класс обеспечивающий сохранение промежуточных и постоянных данных
+ *
  */
 class TestDataReader
 {
@@ -56,9 +65,9 @@ class TestDataReader
 	/**
 	 * saveTempData Сохранить временные данные
 	 *
-	 * @var string $extension расширение закачиваемого файла
+	 * @param string $extension расширение закачиваемого файла
 	 *
-	 * @var string $title Описание закачки
+	 * @param string $title Описание закачки
 	 *
 	 * @return integer Ид временных данных
 	 * 

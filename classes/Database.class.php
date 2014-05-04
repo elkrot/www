@@ -1,6 +1,15 @@
 <?php
 /**
  * Database access class.
+ *
+ * @author Ф.И.О. <e-mail>
+ * @version 1.0
+ * @package Utils
+ * @category Database
+ */
+
+/**
+ * Database access class.
  */
 class Database {
 

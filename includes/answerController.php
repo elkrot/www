@@ -1,4 +1,13 @@
 <?php
+/**
+ * Контроллер Ответов
+ * 
+ * Контроллер Ответов
+ * @package Controllers
+ * @author Ф.И.О. <e-mail>
+ * @version 1.0
+ */
+
 $h2 = "Ответы";
 $id_get = isset($_GET["id"])?$_GET["id"]:0;
 
@@ -27,6 +36,7 @@ switch ($action ) {
 		$h2 = "Создание новый ".$h2;
 		break;
 }
+
 $tblAnswer = new TblAnswer($where,$params);
 foreach ($tblAnswer as $value) {
 	$question_id=$value["question_id"];
@@ -37,7 +47,7 @@ if (is_array ( $targets ) && in_array ( $target, $targets )) {
 			$question_title=$itm["question_title"];
 		}
 	} else {
-		Logger::getInstance()->log($action." ".$target);
+		
 		$ret = $tblAnswer->$action ( $_POST );
 		if ($ret){
 			header ( 'Location: ' . SERVER_NAME_URL . "?target=question&action=view&id=".$question_id );

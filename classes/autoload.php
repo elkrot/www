@@ -1,4 +1,11 @@
 <?php
+/**
+ * Автозагрузчик классовы
+ *
+ * @package Main
+ * @author Ф.И.О. <e-mail>
+ * @version 1.0
+ */
 spl_autoload_register('autoload');
     /*function autoload($class_name)    {
 	if (file_exists($_SERVER['DOCUMENT_ROOT']."/classes/$class_name.class.php")){

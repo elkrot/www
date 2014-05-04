@@ -1,6 +1,14 @@
 <?php
+/**
+ * 
+ * Индексный файл
+ * 
+* @package Main
+* @author Ф.И.О. <e-mail>
+* @version 1.0
+* 
+*/
 $version = explode('.', PHP_VERSION);
-
 require_once "./classes/autoload.php";
 require_once "./cnf/config.php";
 $action = isset ( $_GET ["action"] ) ? htmlspecialchars ( $_GET ["action"] ) : "";

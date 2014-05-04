@@ -6,6 +6,15 @@
  *
  * @author Ф.И.О. <e-mail>
  * @version 1.0
+ * @package Import
+ * @category Upload
+ */
+
+/**
+ * Класс uploadFile Загрузка файла
+ *
+ * Класс обеспечивающий загрузку файла
+ *
  */
  class  uploadFile 
 {

@@ -1,4 +1,5 @@
 <form id = "delete_form" method = "post" >
+<?php echo Html::Hidden("id",$id_get);?>
 	<div class="input-group input-group-lg">
 		<span class="input-group-addon"><b>Наименование:</b></span>
 			<?php foreach ($tblTest as $itm){?>
