@@ -1,0 +1,1 @@
+[Mon May 05 23:18:52 2014] Query failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_test`.`topic`, CONSTRAINT `topic_ibfk_1` FOREIGN KEY (`discipline_id`) REFERENCES `discipline` (`id`))<br />Query : delete from discipline where id =:id

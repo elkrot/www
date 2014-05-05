@@ -1,5 +1,5 @@
     <!-- Fixed navbar -->
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-inner navbar navbar-fixed-top " role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-list-alt"></span>Главная
+        <a class="navbar-brand" href="<?php echo SERVER_NAME_URL;?>"><span class="glyphicon glyphicon-list-alt"></span>Главная
 		</a>
         </div>
         <div class="navbar-collapse collapse">
@@ -38,7 +38,7 @@
 			<?php } ?>
           </ul>
 		  <ul class="nav navbar-nav navbar-right">
-		  <li style ="color:white">Добро пожаловать , <?php echo Authentication::GetUserName();?></li>
+		  <li style ="color: #4169E1;"><a href="#">Добро пожаловать , <?php echo Authentication::GetUserName();?></a></li>
 		  </ul>
         </div><!--/.nav-collapse -->
       </div>

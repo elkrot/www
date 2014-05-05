@@ -1,0 +1,27 @@
+body {
+background-image: url("bg0.png");}
+
+.bordered {
+    background: none repeat scroll 0 0 #ADCDEF;
+    border: 1px solid #FFFFFF;
+    border-radius: 3px;
+    box-shadow: 0 0 3px #9D9D9D, 0 0 27px #FFFFFF inset;
+
+    transition: all 1s ease-in-out 0.3s;
+}
+.jumbotron {
+background-image: url("bg0.png");
+}
+
+.navbar-inner {
+    background-color: #ABCDEF;
+    background-image: linear-gradient(to bottom, #ABCDEF, #F2F2F2);
+    background-repeat: repeat-x;
+    border: 1px solid #ABCDEF;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+    min-height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+*{color: #4169E1;}
